@@ -90,9 +90,9 @@ function processLastItem(stringList, callback) {
  * should return 1000.
 */
 function processSum(numberList, callback) {
-  let result = 0;
-    result = numberList.reduce(callback);
-    return result
+  return numberList.reduce(function(accumulator, currentValue) {
+      return accumulator + currentValue
+  })
 }
 
 /**
@@ -223,8 +223,10 @@ function firstNamesAllCaps(runners) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  return runners.filter(function(element){
+    return element.shirt_size === tShirtSize
+  })
 }
 
 /**
@@ -237,8 +239,8 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  return runners.reduce()
 }
 
 /////////////// CLOSURES ///////////////
