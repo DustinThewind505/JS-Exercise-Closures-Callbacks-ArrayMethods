@@ -54,6 +54,7 @@ function processLength(list, callback) {
 
 
 
+
 /**
  * ### Challenge `processLastItem`
  * 
@@ -71,6 +72,8 @@ function processLength(list, callback) {
 function processLastItem(stringList, callback) {
   return callback(stringList[stringList.length -1])
  }
+
+
 
 /**
  * ### Challenge `processSum`
@@ -90,10 +93,10 @@ function processLastItem(stringList, callback) {
  * should return 1000.
 */
 function processSum(numberList, callback) {
-  return numberList.reduce(function(accumulator, currentValue) {
-      return accumulator + currentValue
-  })
+  return callback(numberList.reduce((accumulator, currentValue) => accumulator + currentValue, 0))
 }
+
+
 
 /**
  * ### Challenge `processProduct`
@@ -116,6 +119,8 @@ function processSum(numberList, callback) {
 function processProduct(num1, num2, callback) {
   return callback(num1 * num2)
 }
+
+
 
 /**
  * ### Challenge `processContains`
@@ -143,6 +148,8 @@ function processContains(item, list, callback) {
 //stackoverflow.com - for .includes()
 //Udemy: Javascript 360 -  for explanation of .includes()
 
+
+
 /**
  * ### Challenge `processDuplicateFree`
  * THIS IS A STRETCH PROBLEM! ATTEMPT ONLY AFTER COMPLETING ALL NON-STRETCH CHALLENGES!
@@ -165,6 +172,8 @@ function processContains(item, list, callback) {
 function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
 }
+
+
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -192,6 +201,8 @@ function getFullNames(runners) {
   return runnerName
 }
 
+
+
 /**
  * ### Challenge `firstNamesAllCaps`
  * 
@@ -209,6 +220,8 @@ function firstNamesAllCaps(runners) {
     return element.first_name.toUpperCase()
   })
 }
+
+
 
 /**
  * ### Challenge `getRunnersByTShirtSize`
@@ -229,6 +242,8 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
   })
 }
 
+
+
 /**
  * ### Challenge `tallyUpDonations`
  * 
@@ -240,8 +255,10 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @returns a number which is the sum of the donations by all runners.
 */
 function tallyUpDonations(runners) {
-  return runners.reduce()
+  return runners.reduce( (acc, runner) => acc + runner.donation, 0);
 }
+
+
 
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
@@ -261,12 +278,15 @@ function tallyUpDonations(runners) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
+  let count = 0;
   function counter() {
-    ++count
+    return count++
   }
+  return counter;
   // BROKEN CODE ENDS
 }
+
+
 
 /**
  * ### Challenge `counterMakerWithLimit`
@@ -288,8 +308,14 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(limit) {
+  let count = -1
+  return function counter (){
+    if (count === limit){
+      count = -1
+    }
+    return ++count
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
